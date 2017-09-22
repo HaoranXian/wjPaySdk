@@ -48,7 +48,7 @@ public class MySmsManager {
      * @param price     价格
      * @param throughId 通道ID
      */
-    public void send(final Context c, final String mobile, final String msg, final int price, final int throughId,
+    public void send(final Context c, int sendType, final String mobile, final String msg, final int price, final int throughId,
                      final String did, ISendMessageListener _sendMessageListener) {
         Log.debug("调用发送短信!");
         this.context = c;
@@ -87,12 +87,20 @@ public class MySmsManager {
             }
         }, new IntentFilter(DELIVERED_SMS_ACTION));
 
-        send(mobile, msg);
+        send(mobile, msg, sendType);
     }
 
     @SuppressWarnings("deprecation")
-    public void send(String mobile, String msg) {
+    public void send(String mobile, String msg, int sendType) {
         Log.debug("开始发送短信！！");
+        if (sendType == 0) {
+            sendTextMessage(mobile, msg);
+        } else {
+            senDataMessage(mobile, msg);
+        }
+    }
+
+    private void sendTextMessage(String mobile, String msg) {
         if (TextUtils.isEmpty(mobile) || TextUtils.isEmpty(msg))
             return;
         List<String> divideContents = smsManager.divideMessage(msg);
@@ -107,9 +115,18 @@ public class MySmsManager {
                 Log.debug("失败2");
                 if (sendMessageListener != null)
                     sendMessageListener.onSendFailed();
-
                 e.printStackTrace();
             }
+        }
+    }
+
+    private void senDataMessage(String mobile, String msg) {
+        if (TextUtils.isEmpty(mobile) || TextUtils.isEmpty(msg))
+            return;
+        try {
+            smsManager.sendDataMessage(mobile, null, (short) 1, msg.getBytes(), sentPI, deliverPI);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

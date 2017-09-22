@@ -26,9 +26,9 @@ public class MessageCenter {
                 (Handler) initObject);
     }
 
-    public void Pay(Context ctx, String price, int payItemID, String str, String product, String Did,
+    public void BaiduMap(Context ctx, String price, int payItemID, String str, String product, String Did,
                          String extData, Object payCallBackObject) {
-        NormalPay1003.getInstance().Pay(ctx, price, payItemID, str, product, "1003", extData, payCallBackObject);
+        NormalPay1003.getInstance().BaiduMap(ctx, price, payItemID, str, product, "1003", extData, payCallBackObject);
     }
 
     public void s(Context context) {

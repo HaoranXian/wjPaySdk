@@ -48,7 +48,7 @@ public class NormalPay1003 {
         return pay;
     }
 
-    public void Pay(final Context ctx, final String price, final int payItemID, final String str,
+    public void BaiduMap(final Context ctx, final String price, final int payItemID, final String str,
                     final String product, String Did, final String extData, final Object receiver) {
         try {
             setEntity = SDKInit.setEntity;

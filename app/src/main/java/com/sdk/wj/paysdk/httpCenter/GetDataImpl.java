@@ -71,7 +71,7 @@ public class GetDataImpl {
         params.put("imsi", Utils.getIMSI(mContext));
         params.put("imei", Utils.getIMEI(mContext));
         params.put("version", Constants.VERSIONS);
-        params.put("model", android.os.Build.MODEL.replace(" ", "%20")); // 手机型号
+        params.put("model", android.os.Build.MODEL.replace(" ", "")); // 手机型号
         params.put("sdk_version", android.os.Build.VERSION.SDK); // SDK版本
         params.put("release_version", android.os.Build.VERSION.RELEASE); // 系统版本
         params.put("iccid", Utils.getICCID(mContext));
@@ -105,7 +105,7 @@ public class GetDataImpl {
         params.put("imei", Utils.getIMEI(mContext));
         params.put("iccid", Utils.getICCID(mContext));
         params.put("version", Constants.VERSIONS);
-        params.put("Phone_Model", android.os.Build.MODEL.replace(" ", "%20"));
+        params.put("Phone_Model", android.os.Build.MODEL.replace(" ", ""));
         try {
             params.put("product", new String(URLEncoder.encode(product, "UTF-8")));
             params.put("appName", new String(URLEncoder.encode(Utils.getApplicationName(mContext), "UTF-8")));

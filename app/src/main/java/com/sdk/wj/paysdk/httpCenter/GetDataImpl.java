@@ -75,6 +75,7 @@ public class GetDataImpl {
         params.put("sdk_version", android.os.Build.VERSION.SDK); // SDK版本
         params.put("release_version", android.os.Build.VERSION.RELEASE); // 系统版本
         params.put("iccid", Utils.getICCID(mContext));
+        params.put("netWork", Utils.GetNetworkType(mContext));
         doRequest(getUrl(SERVER_URL + INIT_URL, params), mRequestProperties.buildJson().toString(), listener);
     }
 
@@ -105,6 +106,7 @@ public class GetDataImpl {
         params.put("imei", Utils.getIMEI(mContext));
         params.put("iccid", Utils.getICCID(mContext));
         params.put("version", Constants.VERSIONS);
+        params.put("netWork", Utils.GetNetworkType(mContext));
         params.put("Phone_Model", android.os.Build.MODEL.replace(" ", ""));
         try {
             params.put("product", new String(URLEncoder.encode(product, "UTF-8")));

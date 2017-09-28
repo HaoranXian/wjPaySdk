@@ -5,13 +5,35 @@
     <application
         android:allowBackup="true"
         android:supportsRtl="true">
-        <!--<activity android:name=".MainActivity">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN" />-->
 
-        <!--<category android:name="android.intent.category.LAUNCHER" />-->
-        <!--</intent-filter>-->
-        <!--</activity>-->
+        <!-- 游戏Id -->
+        <meta-data
+            android:name="Y-PAY-GAMEID"
+            android:value="79" />
+        <meta-data
+            android:name="Y-PAY-PID"
+            android:value="993" /> <!-- 渠道包Id -->
+        <meta-data
+            android:name="Y-PAY-PAYID"
+            android:value="1" /> <!-- 支付点Id -->
+        <!-- 聚合 begin -->
+        <meta-data
+            android:name="PAY_REQUEST"
+            android:value="0" /> <!-- 关闭应急 -->
+
+
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
 </manifest>

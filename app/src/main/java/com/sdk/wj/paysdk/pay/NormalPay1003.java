@@ -260,14 +260,14 @@ public class NormalPay1003 {
                     Log.debug("---进入支付失败逻辑");
                 }
                 PayCallBack.getInstance().payFail(callback);
-                if (Utils.getIsRequest(ctx) == 0) { // 不执行应急 0关闭 1打开
-                    PayCallBack.getInstance().payFail(callback);
-                    if (Constants.isOutPut) {
-
-                        Log.debug("进入支付失败逻辑 ----------- 33333333333");
-                    }
-                    return;
-                }
+//                if (Utils.getIsRequest(ctx) == 0) { // 不执行应急 0关闭 1打开
+//                    PayCallBack.getInstance().payFail(callback);
+//                    if (Constants.isOutPut) {
+//
+//                        Log.debug("进入支付失败逻辑 ----------- 33333333333");
+//                    }
+//                    return;
+//                }
                 /**
                  * 失败的话修改渠道优先级
                  *

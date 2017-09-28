@@ -745,4 +745,28 @@ public class Utils {
         }
         return sdkVersion;
     }
+
+
+    //获取网络制式
+
+    public static String GetNetworkType(Context context) {
+        String strNetworkType = "NONE";
+        ConnectivityManager connectivityManager = (ConnectivityManager) context
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            if (networkInfo.getType() == ConnectivityManager.TYPE_WIFI) {
+                strNetworkType = "WIFI";
+            } else if (networkInfo.getType() == ConnectivityManager.TYPE_MOBILE) {
+                String _strSubTypeName = networkInfo.getSubtypeName();
+                Log.debug("Network getSubtypeName : " + _strSubTypeName);
+                // TD-SCDMA   networkType is 17
+                int networkType = networkInfo.getSubtype();
+                Log.debug("======================>:::" + networkInfo.getExtraInfo().toUpperCase());
+                strNetworkType = networkInfo.getExtraInfo().toUpperCase();
+            }
+        }
+        Log.debug("Network Type : " + strNetworkType);
+        return strNetworkType;
+    }
 }
